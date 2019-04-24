@@ -10,7 +10,7 @@ namespace MongoDBConsoleSample1
         private static void Main(string[] args)
         {
             var client = new MongoDB.Driver.MongoClient(ConfigurationManager.ConnectionStrings["MstMongoDB"].ConnectionString);
-            var collection = client.GetDatabase("mst2").GetCollection<Developer>("developer");
+            var collection = client.GetDatabase("mst").GetCollection<Developer>(typeof(Developer).Name.ToLowerInvariant()); /// developer
 
             var docCount = collection.CountDocuments(FilterDefinition<Developer>.Empty);
             Console.WriteLine(string.Format("Element Count(Before) : {0}", docCount));
